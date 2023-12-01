@@ -35,22 +35,22 @@ class State(ABC):
 
 class StateOne(State):
 
-    @print_class_meth_name
+    @print_class_meth_name()
     def act_first(self, params):
         self.context.set_state(StateTwo())
 
-    @print_class_meth_name
+    @print_class_meth_name()
     def act_sec(self, params):
         pass
 
 
 class StateTwo(State):
 
-    @print_class_meth_name
+    @print_class_meth_name()
     def act_first(self, params):
         self.context.set_state(StateOne())
 
-    @print_class_meth_name
+    @print_class_meth_name()
     def act_sec(self, params):
         pass
 

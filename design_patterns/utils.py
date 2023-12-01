@@ -1,11 +1,13 @@
-def print_class_meth_name(method, *method_args, **method_kwargs):
+def print_class_meth_name(*initial_args, **initial_kwargs):
 
-    def wrapper_initial(instance, *initial_args, **initial_kwargs):
+    def _print_class_meth_name(method):
 
-        def wrapper():
+        def wrapper_initial(instance, *method_args, **method_kwargs):
+            # TODO: make use of initial_args and initial_kwargs there
             print(f"From {instance.__class__.__name__}.{method.__name__}")
-            return method(instance, *initial_args, **initial_kwargs)
+            result = method(instance, *method_args, **method_kwargs)
+            return result
 
-        return wrapper()
+        return wrapper_initial
 
-    return wrapper_initial
+    return _print_class_meth_name
