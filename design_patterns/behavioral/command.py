@@ -57,7 +57,7 @@ class Dispatcher:
     def action(self):
         # TODO: How to pass args to commands
         self.on_action.do()
-        print(f"Action in {self.__class__.__name__}")
+        print(f"Action in \"{self.__class__.__name__}\"")
         self.on_end.do()
 
 
