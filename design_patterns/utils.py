@@ -13,18 +13,24 @@ def print_class_meth_name(*initial_args, **initial_kwargs):
     return _print_class_meth_name
 
 
-def print_callable_name(*args, **kwargs):
+def print_callable_name(*initial_args, **initial_kwargs):
 
-    def wrapper(func):
-        print_args_kwargs(*args, **kwargs)
-        print(f"Before \"{func.__name__}\"")
-        return func
+    def _print_callable_name(_callable):
 
-    return wrapper
+        def wrapper_initial(*callable_args, **callable_kwargs):
+            print_args_kwargs(*initial_args, **initial_kwargs)
+            print(f"Before \"{_callable.__name__}\"")
+            result = _callable(*callable_args, **callable_kwargs)
+            return result
+
+        return wrapper_initial
+
+    return _print_callable_name
 
 
 def print_args_kwargs(*args, **kwargs):
     if args:
-        print(args)
+        for a in args:
+            print(a)
     if kwargs:
         print(kwargs)
