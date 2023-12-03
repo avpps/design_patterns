@@ -21,7 +21,7 @@ class LegacyRequesterAdapter(Requester, LegacyRequester):
         super().legacy_request()
 
 
-@print_callable_name("\n")
+@print_callable_name()
 def run(requester: Requester):
     requester.request()
 
